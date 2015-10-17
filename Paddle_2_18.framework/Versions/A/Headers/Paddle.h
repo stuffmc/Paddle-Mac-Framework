@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Paddle. All rights reserved.
 //
 
-#define kPADProductName @"name"
+#define kPADProductName @"product_name"
 #define kPADOnSale @"on_sale"
 #define kPADDiscount @"discount_line"
-#define kPADUsualPrice @"base_price"
+#define kPADUsualPrice @"usual_price"
 #define kPADCurrentPrice @"current_price"
 #define kPADCurrency @"price_currency"
-#define kPADDevName @"vendor_name"
-#define kPADTrialText @"text"
-#define kPADImage @"image"
-#define kPADTrialDuration @"duration"
+#define kPADDevName @"developer_name"
+#define kPADTrialText @"trial_text"
+#define kPADImage @"product_image"
+#define kPADTrialDuration @"trial_duration"
 #define kPADProductImage @"default_image"
 
 #define kPADActivated @"Activated"
@@ -26,7 +26,6 @@
 @protocol PaddleDelegate <NSObject>
 
 @optional
-- (void)licenceActivated;
 - (void)licenceDeactivated:(BOOL)deactivated message:(NSString *)deactivateMessage;
 - (void)paddleDidFailWithError:(NSError *)error;
 @end
@@ -47,8 +46,6 @@
     BOOL willShowLicensingWindow;
     BOOL hasTrackingStarted;
     BOOL willSimplifyViews;
-    BOOL willShowActivationAlert;
-    BOOL willContinueAtTrialEnd;
     
     #if !__has_feature(objc_arc)
     id <PaddleDelegate> delegate;
@@ -68,8 +65,6 @@
 @property (assign) BOOL willShowLicensingWindow;
 @property (assign) BOOL hasTrackingStarted;
 @property (assign) BOOL willSimplifyViews;
-@property (assign) BOOL willShowActivationAlert;
-@property (assign) BOOL willContinueAtTrialEnd;
 
 
 + (Paddle *)sharedInstance;

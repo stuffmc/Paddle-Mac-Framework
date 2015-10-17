@@ -23,7 +23,6 @@
     NSString *userId;
     NSString *receiptId;
     NSDate *lastActivated;
-    NSString *userEmail;
 }
 
 @property (assign) id <PSKReceiptDelegate> delegate;
@@ -34,7 +33,6 @@
 @property (copy) NSString *userId;
 @property (copy) NSString *receiptId;
 @property (nonatomic, retain) NSDate *lastActivated;
-@property (copy) NSString *userEmail;
 
 - (void)verify;
 - (void)store;

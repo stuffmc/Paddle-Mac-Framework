@@ -35,7 +35,7 @@ Make sure you 'Add To Target' for your app.
 	`#import <Paddle/Paddle.h>`
 * Before you use either PaddleLicensing or PaddleStoreKit, you will need to set your credentials. This would usually be done in  `applicationDidFinishLaunching`, for example:
 ```
-		Paddle *paddle = [Paddle sharedInstance];
+	Paddle *paddle = [Paddle sharedInstance];
     [paddle setProductId:@"491452"];
     [paddle setVendorId:@"389"];
     [paddle setApiKey:@"e804e5ba7480af14e596d0272031bc01"];
@@ -47,16 +47,14 @@ After setting up the framework you can now implement either PaddleLicensing or P
 
 In `applicationDidFinishLaunching` you first need to create an NSDictionary containing the default values for your product, like so:
 ```
-NSDictionary *productInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-	@"10.00", kPADCurrentPrice,
-	@"Test Developer", kPADDevName,
-	@"USD", kPADCurrency,
-	@"http://www.macupdate.com/util/iconlg/17227.png", kPADImage,
-	@"Test Product 2", kPADProductName,
-	@"7", kPADTrialDuration,
-	@"Thanks for downloading a trial of our product", kPADTrialText,
-	@"paddleicon.png", kPADProductImage, //Image file in your project
-	nil];
+  NSDictionary *productInfo = @{kPADCurrentPrice:   @"10.00",
+                                kPADDevName:        @"Test Developer",
+                                kPADCurrency:       @"USD",
+                                kPADImage:          @"http://www.macupdate.com/util/iconlg/17227.png",
+                                kPADProductName:    @"Test Product 2",
+                                kPADTrialDuration:  @"7",
+                                kPADTrialText:      @"Thanks for downloading a trial of our product",
+                                kPADProductImage:   @"paddleicon.png"}; // Image file in your project
 ```
 
 Now you can start the Paddle licencing process with the `startLicencing` method. This method accepts your product information and main window to display the sheet from.
@@ -66,18 +64,16 @@ Now you can start the Paddle licencing process with the `startLicencing` method.
 
 The complete method in your AppDelegate.h, would look like:
 ```
-	- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-		{
-    	NSDictionary *productInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"10.00", kPADCurrentPrice,
-                                 @"Test Developer", kPADDevName,
-                                 @"USD", kPADCurrency,
-                                 @"http://www.macupdate.com/util/iconlg/17227.png", kPADImage,
-                                 @"Test Product 2", kPADProductName,
-                                 @"7", kPADTrialDuration,
-                                 @"Thanks for downloading a trial of our product", kPADTrialText,
-                                 @"paddleicon.png", kPADProductImage, //Image file in your project
-                                 nil];
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+	  NSDictionary *productInfo = @{kPADCurrentPrice:   @"10.00",
+	                                kPADDevName:        @"Test Developer",
+	                                kPADCurrency:       @"USD",
+	                                kPADImage:          @"http://www.macupdate.com/util/iconlg/17227.png",
+	                                kPADProductName:    @"Test Product 2",
+	                                kPADTrialDuration:  @"7",
+	                                kPADTrialText:      @"Thanks for downloading a trial of our product",
+	                                kPADProductImage:   @"paddleicon.png"}; // Image file in your project
     
     	[[Paddle sharedInstance] startLicensing:productInfo timeTrial:YES withWindow:self.window];
 ```
